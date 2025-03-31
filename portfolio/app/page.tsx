@@ -5,8 +5,6 @@ import ProjectCard from "./components/ProjectCard";
 import { projects } from "./data/projects";
 
 export default function HomePage() {
-  // Project data is now imported, not defined here
-
   return (
     <>
       <Hero />

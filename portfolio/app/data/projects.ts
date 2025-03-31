@@ -18,7 +18,7 @@ export const projects: ProjectType[] = [
       "Professional aesthetics clinic website built with a modern tech stack, focusing on clear service presentation and user experience.", // Keep your updated description
     imageUrl: "/images/dcreflections-homepage-screenshot.png",
     liveUrl: "https://www.dcreflections.co.uk/",
-    repoUrl: "https://github.com/AntoniDev97",
+    //repoUrl: "https://github.com/AntoniDev97",
     techStack: [
       "React",
       "Next.js",

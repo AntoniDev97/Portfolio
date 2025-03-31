@@ -5,14 +5,13 @@ import React from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 
-// Define the expected properties for the card
 interface ProjectCardProps {
   title: string;
   description: string;
-  imageUrl: string; // URL for the project screenshot
-  liveUrl: string; // URL to the live site
-  repoUrl?: string; // Optional URL to the code repository
-  techStack: string[]; // Array of technologies used
+  imageUrl: string;
+  liveUrl: string;
+  repoUrl?: string;
+  techStack: string[];
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -25,62 +24,70 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <motion.div
-      className="card bg-base-200 shadow-xl overflow-hidden h-full flex flex-col" // DaisyUI card, theme bg, shadow, ensure flex column for footer alignment
+      className="group card bg-base-200 shadow-xl overflow-hidden h-full flex flex-col"
       initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }} // Animate when it comes into view
-      viewport={{ once: true, amount: 0.3 }} // Trigger animation once, when 30% visible
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      whileHover={{ y: -5, boxShadow: "0 10px 20px rgba(0, 0, 0, 0.3)" }} // Subtle lift and shadow on hover
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: "easeOut", delay: 0.1 },
+      }}
+      viewport={{ once: true, amount: 0.3 }}
+      whileHover={{
+        boxShadow: "0 0 25px 8px rgba(220, 38, 38, 0.4)",
+      }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
     >
-      <figure className="aspect-video overflow-hidden">
-        {/* Use figure for semantic image container */}
-        {/* Use Next.js Image component */}
+      <figure className="aspect-video overflow-hidden relative">
         <Image
           src={imageUrl}
           alt={`${title} screenshot`}
-          width={600} // Provide appropriate width
-          height={338} // Provide corresponding height (for 16:9)
-          className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105" // Basic zoom on hover parent
-          priority // Prioritize loading if it's one of the first images
+          width={600}
+          height={338}
+          className="object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110"
+          priority
         />
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"></div>
       </figure>
+
       <div className="card-body p-6 flex-grow">
-        {/* Card content area, make it grow */}
         <h2 className="card-title text-2xl font-semibold">{title}</h2>
         <p className="text-base-content/80 mt-2 mb-4 flex-grow">
           {description}
         </p>
-        {/* Allow paragraph to grow */}
         <div className="card-actions justify-start flex-wrap gap-2 mb-4">
-          {/* Tech stack badges */}
           {techStack.map((tech) => (
-            // Using secondary color (burgundy) for badges
             <div key={tech} className="badge badge-secondary badge-outline">
               {tech}
             </div>
           ))}
         </div>
       </div>
-      {/* Actions pushed to the bottom */}
-      <div className="card-actions justify-end p-6 pt-0">
-        {/* Links/Buttons area */}
-        <a
+
+      <div className="card-actions justify-end p-6 pt-0 space-x-2">
+        <motion.a
           href={liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-primary btn-sm" // Red button
+          className="btn btn-primary btn-sm"
+          whileHover={{ scale: 1.1, filter: "brightness(1.1)" }}
+          whileTap={{ scale: 0.95 }}
         >
           Live Site
-        </a>
-        {repoUrl && ( // Conditionally render repo button if URL exists
-          <a
+        </motion.a>
+        {repoUrl && (
+          <motion.a
             href={repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-ghost btn-sm" // Less prominent button
+            className="btn btn-ghost btn-sm"
+            whileHover={{
+              scale: 1.1,
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+            }}
+            whileTap={{ scale: 0.95 }}
           >
             GitHub Repo
-          </a>
+          </motion.a>
         )}
       </div>
     </motion.div>
