@@ -1,26 +1,100 @@
+/* src/app/globals.css */
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "custom-dark-red";
+  /* Theme name */
+  default: true;
+  /* Attempt to make it default */
+  prefersdark: true;
+  /* Indicate it's a dark theme */
+  color-scheme: dark;
+  /* Set color scheme */
+
+  /* --- Define Theme Variables Based on Your Request --- */
+  /* Using variable names from your example, mapped to your desired colors */
+
+  /* Base Colors (Dark grey/black background, white text) */
+  --color-base-100: #18181b;
+  /* Zinc 900 - Main dark background */
+  --color-base-200: #27272a;
+  /* Zinc 800 - Slightly lighter card bg */
+  --color-base-300: #3f3f46;
+  /* Zinc 700 - Even lighter focus bg */
+  --color-base-content: #f4f4f5;
+  /* Zinc 100 - Main light text */
+
+  /* Primary Color (Red) */
+  --color-primary: #DC2626;
+  /* Red 600 */
+  --color-primary-content: #ffffff;
+
+  /* Secondary Color (Burgundy) */
+  --color-secondary: #991B1B;
+  /* Red 800 */
+  --color-secondary-content: #ffffff;
+
+  /* Accent Color (Lighter Red) */
+  --color-accent: #F87171;
+  /* Red 400 */
+  --color-accent-content: #1f2937;
+  /* Dark text on light accent */
+
+  /* Neutral Color */
+  --color-neutral: #52525b;
+  /* Zinc 600 */
+  --color-neutral-content: #ffffff;
+
+  /* Status Colors (Defaults or using your red) */
+  --color-info: #2563eb;
+  /* Blue */
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  /* Green */
+  --color-success-content: #ffffff;
+  --color-warning: #facc15;
+  /* Yellow */
+  --color-warning-content: #1f2937;
+  --color-error: #DC2626;
+  /* Using your primary red */
+  --color-error-content: #ffffff;
+
+  /* Radius and Border */
+  --radius-box: 0.75rem;
+  /* Rounded corners for cards/boxes */
+  --radius-btn: 0.5rem;
+  /* Rounded corners for buttons */
+  --radius-badge: 1.9rem;
+  /* Rounded corners for badges */
+  --border: 1px;
+  /* Base border width */
+
+  /* Font Variables (These still rely on being set via layout/global :root) */
+  /* --font-sans: var(--font-geist-sans); */
+  /* --font-mono: var(--font-geist-mono); */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* --- Base Body Styles --- */
+/* Attempt to apply base styles using variables potentially set by the above block */
+/* This @layer ensures Tailwind base styles have priority if needed */
+@layer base {
+  body {
+    @apply text-[var(--color-base-content)];
+    /* Use variable for base text */
+    background-color: var(--color-base-100);
+    /* Use variable for base bg */
+    font-family: var(--font-geist-sans);
+    /* Assuming --font-geist-sans is available */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Define font vars on :root for better global access */
+:root {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
