@@ -43,29 +43,29 @@ const AboutMeSection = () => {
           >
             {/* Paragraphs remain the same */}
             <motion.p variants={itemVariants}>
-              Hi there! I'm Antoni, a dedicated Full Stack Developer based near
-              Colchester, England. I graduated with **First Class Honours in
-              Computer Science** from the University of Essex, building a strong
+              Hello there! I'm Antoni, a dedicated Full Stack Developer based
+              near Colchester, England. I graduated with First Class Honours in
+              Computer Science from the University of Essex, building a strong
               theoretical foundation for my practical work.
             </motion.p>
             <motion.p variants={itemVariants}>
               In my current role, my focus is on enhancing our internal web
-              systems which boost colleague efficiency. I actively **develop new
-              features and automate manual workflows** using **ASP.NET, C#, SQL
-              Server, and Bootstrap**, contributing to the ongoing modernization
+              systems which boost colleague efficiency. I actively develop new
+              features and automate manual workflows using ASP.NET, C#, SQL
+              Server, and Bootstrap, contributing to the ongoing modernisation
               and improvement of the application. I enjoy the challenge of
               improving code quality, performance, and maintainability.
             </motion.p>
             <motion.p variants={itemVariants}>
               Driven by a passion for continuous learning, I'm actively
-              expanding my skillset into the modern JavaScript ecosystem,
-              currently diving deep into **React, Next.js, TypeScript, and
-              MongoDB** – the stack powering this very portfolio!
+              expanding my skill set into the modern JavaScript ecosystem,
+              currently diving deep into React, Next.js, TypeScript, and MongoDB
+              – the stack powering this very portfolio!
             </motion.p>
             <motion.p variants={itemVariants}>
-              Outside of coding, I keep active with hobbies like the **Gym,
-              Fishing, Metal Detecting, Football, and Badminton**. And of
-              course, there's my cat, who often supervises my work!
+              Outside of coding, I keep active with hobbies like the Gym,
+              Fishing, Metal Detecting, Football, and Badminton. And of course,
+              there's my cat, who often supervises my work!
             </motion.p>
           </motion.div>
           {/* Image Column - Changed to Grid */}
