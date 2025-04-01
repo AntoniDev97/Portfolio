@@ -128,9 +128,9 @@ export default async function GithubRepoSection() {
             href={`https://github.com/${GITHUB_USERNAME}?tab=repositories`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-outline btn-secondary" // Kept secondary outline
+            className="btn btn-outline btn-secondary [text-shadow:none]"
           >
-            View All Repositories on GitHub{" "}
+            View All Repositories on GitHub
             <GithubIcon className="inline-block w-4 h-4 ml-2" />
           </a>
         </div>
