@@ -34,11 +34,7 @@ const Hero = () => {
   return (
     // Using DaisyUI component & theme classes
     <div className="hero min-h-[70vh] md:min-h-[60vh] bg-base-200 rounded-box my-10 shadow-xl overflow-hidden">
-      {" "}
-      {/* Adjusted min-height */}
-      {/* Updated hero-content for side-by-side layout on large screens */}
       <div className="hero-content flex-col lg:flex-row-reverse items-center justify-center gap-10 lg:gap-16 w-full max-w-4xl mx-auto px-4">
-        {" "}
         {/* Use flex, reverse row on large screens, add gap */}
         {/* Text and Button Content Block */}
         <motion.div

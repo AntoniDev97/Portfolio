@@ -5,6 +5,7 @@ import ProjectCard from "./components/ProjectCard";
 import { projects } from "./data/projects";
 import GithubRepoSection from "./components/githubRepo/GithubRepoSection";
 import AboutMe from "./components/AboutMe";
+import ContactSection from "./components/ContactSection";
 
 export default function HomePage() {
   return (
@@ -12,10 +13,7 @@ export default function HomePage() {
       <Hero />
 
       {/* --- Projects Section --- */}
-      <section
-        id="projects"
-        className="py-16 md:py-24 bg-base-100 rounded-box mb-10"
-      >
+      <section id="projects" className="py-16 md:py-24 bg-base-100 rounded-box">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16">
             Featured Project
@@ -44,26 +42,8 @@ export default function HomePage() {
       {/* --- Dynamic GitHub Section (Render the dedicated component) --- */}
       <GithubRepoSection />
 
-      <section
-        id="contact"
-        className="py-16 md:py-24 bg-base-200 rounded-box mb-10 shadow-lg"
-      >
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-base-content">
-            Get In Touch
-          </h2>
-          <p className="text-lg text-base-content/80 mb-8 max-w-xl mx-auto">
-            Interested in collaborating or have a question?
-          </p>
-          <a
-            href="mailto:your.email@example.com"
-            className="btn btn-secondary shadow-md"
-          >
-            {/* Update email */}
-            Email Me
-          </a>
-        </div>
-      </section>
+      {/* --- Contact Section Component --- */}
+      <ContactSection />
     </>
   );
 }
