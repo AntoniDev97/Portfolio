@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import ProjectCard from "./components/ProjectCard";
 import { projects } from "./data/projects";
 import GithubRepoSection from "./components/githubRepo/GithubRepoSection";
+import AboutMe from "./components/AboutMe";
 
 export default function HomePage() {
   return (
@@ -36,6 +37,9 @@ export default function HomePage() {
         </div>
       </section>
       {/* --- End Projects Section --- */}
+
+      {/* --- About Me Section --- */}
+      <AboutMe />
 
       {/* --- Dynamic GitHub Section (Render the dedicated component) --- */}
       <GithubRepoSection />
