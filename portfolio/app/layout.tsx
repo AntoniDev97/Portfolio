@@ -2,6 +2,7 @@
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import ScrollProgressBar from "@/app/components/ScrollProgressBar";
 import "./globals.css";
 
 import Navbar from "./components/Navbar";
@@ -34,6 +35,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen`}
       >
+        <ScrollProgressBar />
         <Navbar />
         <main className="flex-grow container mx-auto px-4 py-8 w-full">
           {children}
