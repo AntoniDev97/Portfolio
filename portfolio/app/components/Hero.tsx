@@ -53,8 +53,8 @@ const Hero = () => {
             variants={itemVariants}
             className="py-6 text-lg md:text-xl text-base-content/80"
           >
-            I'm Antoni Christodoulou, a Full Stack Developer passionate about
-            building creative, functional, and modern web applications.
+            {`I'm`} Antoni Christodoulou, a Full Stack Developer passionate
+            about building creative, functional, and modern web applications.
           </motion.p>
           <motion.div
             variants={itemVariants}
@@ -62,7 +62,6 @@ const Hero = () => {
           >
             {/* Buttons */}
             <Link href="/#projects" className="w-full sm:w-auto">
-              {" "}
               {/* Ensure button takes width on small screens */}
               <motion.button
                 className="btn btn-primary w-full sm:w-auto text-lg px-6 shadow-lg" // Added w-full sm:w-auto

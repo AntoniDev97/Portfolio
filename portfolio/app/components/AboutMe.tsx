@@ -43,10 +43,10 @@ const AboutMeSection = () => {
           >
             {/* Paragraphs remain the same */}
             <motion.p variants={itemVariants}>
-              Hello there! I'm Antoni, a dedicated Full Stack Developer based
-              near Colchester, England. I graduated with First Class Honours in
-              Computer Science from the University of Essex, building a strong
-              theoretical foundation for my practical work.
+              Hello there! {`I'm`} Antoni, a dedicated Full Stack Developer
+              based near Colchester, England. I graduated with First Class
+              Honours in Computer Science from the University of Essex, building
+              a strong theoretical foundation for my practical work.
             </motion.p>
             <motion.p variants={itemVariants}>
               In my current role, my focus is on enhancing our internal web
@@ -57,7 +57,7 @@ const AboutMeSection = () => {
               improving code quality, performance, and maintainability.
             </motion.p>
             <motion.p variants={itemVariants}>
-              Driven by a passion for continuous learning, I'm actively
+              Driven by a passion for continuous learning, {`I'm`} actively
               expanding my skill set into the modern JavaScript ecosystem,
               currently diving deep into React, Next.js, TypeScript, and MongoDB
               – the stack powering this very portfolio!
@@ -65,7 +65,7 @@ const AboutMeSection = () => {
             <motion.p variants={itemVariants}>
               Outside of coding, I keep active with hobbies like the Gym,
               Fishing, Metal Detecting, Football, and Badminton. And of course,
-              there's my cat, who often supervises my work!
+              {`there's`} my cat, who often supervises my work!
             </motion.p>
           </motion.div>
           {/* Image Column - Changed to Grid */}
