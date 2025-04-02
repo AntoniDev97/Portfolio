@@ -6,6 +6,7 @@ import { projects } from "./data/projects";
 import GithubRepoSection from "./components/githubRepo/GithubRepoSection";
 import AboutMe from "./components/AboutMe";
 import ContactSection from "./components/ContactSection";
+import SkillsSection from "./components/SkillsSection";
 
 export default function HomePage() {
   return (
@@ -41,6 +42,9 @@ export default function HomePage() {
 
       {/* --- Dynamic GitHub Section (Render the dedicated component) --- */}
       <GithubRepoSection />
+
+      {/* --- Skills Section Component --- */}
+      <SkillsSection />
 
       {/* --- Contact Section Component --- */}
       <ContactSection />
