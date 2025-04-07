@@ -21,7 +21,7 @@ const itemVariants = {
 
 const ContactSection = () => {
   // --- IMPORTANT: Replace with your actual URLs ---
-  const yourEmail = "karatedon@live.co.uk";
+  const yourEmail = "antoniagc@live.co.uk";
   const yourLinkedIn =
     "https://www.linkedin.com/in/antoni-christodoulou-582110177";
   const yourInstagram = "https://www.instagram.com/4antoni/";

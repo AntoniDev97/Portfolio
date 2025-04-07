@@ -1,10 +1,10 @@
-// src/components/MemoryGameSection.tsx
+// app/components/MemoryGameSection.tsx
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-// --- Correct import for Framer Motion ---
 import { motion } from "motion/react";
-import Card from "./Card";
+import Card from "./Card"; // Import the Card component
+// Import the icons you want to use from your LOCAL icons file
 import {
   ReactIcon,
   NodejsIcon,
@@ -12,12 +12,12 @@ import {
   TypescriptIcon,
   MongoDbIcon,
   TailwindcssIcon,
-} from "../icons/tech-icons"; // Adjust path as needed
+} from "../icons/tech-icons";
 
 // Define card structure
 interface CardData {
-  id: string;
-  value: string;
+  id: string; // Unique instance ID (e.g., 'react-1', 'react-2')
+  value: string; // Identifier for matching pairs (e.g., 'react')
   iconComponent: React.ComponentType<{ className?: string }>;
   isFlipped: boolean;
   isMatched: boolean;
@@ -31,6 +31,7 @@ const iconPairs = [
   { value: "nodejs", icon: NodejsIcon },
   { value: "tailwind", icon: TailwindcssIcon },
   { value: "mongodb", icon: MongoDbIcon },
+  // Add more pairs here if desired (ensure total is even)
 ];
 
 // Fisher-Yates Shuffle function
@@ -78,7 +79,7 @@ const MemoryGameSection = () => {
     setMoves(0);
     setIsChecking(false);
     setIsGameOver(false);
-    // highScore persists across resets in the same session
+    // High score persists across resets in this session
   }, []);
 
   // Initial setup
@@ -86,86 +87,92 @@ const MemoryGameSection = () => {
     setupGame();
   }, [setupGame]);
 
-  // --- Check for matches when two cards are flipped ---
+  // --- Effect 1: Check for matches & Set Game Over ---
+  // Runs when cards are flipped
   useEffect(() => {
-    // Only proceed if exactly two cards are flipped
     if (flippedIndexes.length === 2) {
-      setIsChecking(true); // Prevent further clicks
-      setMoves((prev) => prev + 1); // Increment move count for the attempt
+      setIsChecking(true);
+      setMoves((prev) => prev + 1); // Increment moves on every attempt
 
       const [firstIndex, secondIndex] = flippedIndexes;
+      // Add checks for card existence before accessing value
       const firstCard = cards[firstIndex];
       const secondCard = cards[secondIndex];
 
+      if (!firstCard || !secondCard) {
+        console.error("Card data missing for flipped index.");
+        setIsChecking(false);
+        setFlippedIndexes([]);
+        return;
+      }
+
       if (firstCard.value === secondCard.value) {
         // Match found
-        const updatedCards = cards.map(
-          (card) =>
-            card.value === firstCard.value
-              ? { ...card, isMatched: true, isFlipped: true }
-              : card // Keep matched cards flipped
+        const updatedCards = cards.map((card) =>
+          card.value === firstCard.value
+            ? { ...card, isMatched: true, isFlipped: true }
+            : card
         );
-        setCards(updatedCards);
-        setFlippedIndexes([]); // Clear flipped cards immediately
+        setCards(updatedCards); // Update card state
+        setFlippedIndexes([]); // Clear flipped immediately
         setIsChecking(false); // Allow clicks again
 
-        // Check for game over using the updated card state
+        // Check for game over *using the just updated state*
         const allMatched = updatedCards.every((card) => card.isMatched);
         if (allMatched) {
-          setIsGameOver(true);
-          // Update High Score State (No LocalStorage)
-          const finalMoves = moves + 1; // Use updated moves count
-          if (highScore === null || finalMoves < highScore) {
-            setHighScore(finalMoves);
-          }
+          setIsGameOver(true); // Set game over flag, high score handled in separate effect
         }
       } else {
         // No match - flip back after a delay
         const timeoutId = setTimeout(() => {
           setCards((prevCards) =>
             prevCards.map((card, index) =>
-              // Only flip back cards that are in the current flippedIndexes pair
               index === firstIndex || index === secondIndex
                 ? { ...card, isFlipped: false }
                 : card
             )
           );
-          setFlippedIndexes([]); // Clear flipped cards after timeout
-          setIsChecking(false); // Allow clicks again after timeout
-        }, 1000); // 1 second delay
-        // Cleanup timeout if dependencies change before timeout finishes
-        return () => clearTimeout(timeoutId);
+          setFlippedIndexes([]);
+          setIsChecking(false);
+        }, 1000);
+        return () => clearTimeout(timeoutId); // Cleanup timeout
       }
     }
-    // --- Dependency Array ---
-    // This effect should ONLY re-run when the cards being evaluated change,
-    // which happens when `flippedIndexes` gets 2 items, or `cards` state updates.
+    // This effect now correctly depends only on the state needed to check matches
   }, [flippedIndexes, cards]);
-  // --- End match checking effect ---
+  // --- End Effect 1 ---
+
+  // --- Effect 2: Update High Score on Game Over ---
+  // Runs only when isGameOver state changes
+  useEffect(() => {
+    if (isGameOver) {
+      // Compare final 'moves' state with 'highScore' state
+      if (highScore === null || moves < highScore) {
+        setHighScore(moves); // Update the high score state
+      }
+    }
+    // This effect correctly depends on the values it reads/uses
+  }, [isGameOver, moves, highScore]);
+  // --- End Effect 2 ---
 
   const handleCardClick = (index: number) => {
-    // Prevent clicking under various conditions
     if (
       isChecking ||
-      cards[index].isFlipped ||
-      cards[index].isMatched ||
+      cards[index]?.isFlipped ||
+      cards[index]?.isMatched ||
       flippedIndexes.length >= 2
     ) {
       return;
     }
-
-    // Flip the clicked card
     setCards((prevCards) =>
       prevCards.map((card, i) =>
         i === index ? { ...card, isFlipped: true } : card
       )
     );
-
-    // Add index to the list of flipped cards
     setFlippedIndexes((prev) => [...prev, index]);
   };
 
-  // --- JSX Rendering ---
+  // --- JSX Rendering (No changes needed from previous working version) ---
   return (
     <motion.section
       id="game"
@@ -176,7 +183,6 @@ const MemoryGameSection = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 text-center">
-        {/* Heading and Intro Text */}
         <motion.h2
           className="text-3xl md:text-4xl font-bold mb-4"
           initial={{ opacity: 0, y: 20 }}
@@ -196,7 +202,6 @@ const MemoryGameSection = () => {
           Test your memory with some tech icons!
         </motion.p>
 
-        {/* Game Stats & Controls */}
         <div className="flex flex-wrap justify-center items-center gap-6 mb-8">
           <div className="text-lg">
             Moves: <span className="font-bold text-primary">{moves}</span>
@@ -212,7 +217,6 @@ const MemoryGameSection = () => {
           </button>
         </div>
 
-        {/* Game Grid */}
         <motion.div
           className="grid grid-cols-4 md:grid-cols-6 gap-3 md:gap-4 max-w-xl mx-auto"
           initial="hidden"
@@ -229,7 +233,6 @@ const MemoryGameSection = () => {
             >
               <Card
                 {...card}
-                // Disable clicking if checking pair OR if card is already revealed
                 isDisabled={isChecking || card.isFlipped || card.isMatched}
                 onClick={() => handleCardClick(index)}
               />
@@ -237,7 +240,6 @@ const MemoryGameSection = () => {
           ))}
         </motion.div>
 
-        {/* Game Over Message */}
         {isGameOver && (
           <motion.div
             initial={{ scale: 0.5, opacity: 0 }}
