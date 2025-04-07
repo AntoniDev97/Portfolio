@@ -7,11 +7,13 @@ import GithubRepoSection from "./components/githubRepo/GithubRepoSection";
 import AboutMe from "./components/AboutMe";
 import SkillsSection from "./components/SkillsSection";
 import PcSpecsSection from "./components/PcSpecsSection";
+import MemoryGameSection from "./components/memoryGame/MemoryGameSection";
 import ContactSection from "./components/ContactSection";
 
 export default function HomePage() {
   return (
     <>
+      {/* --- Hero Section --- */}
       <Hero />
 
       {/* --- Projects Section --- */}
@@ -49,6 +51,9 @@ export default function HomePage() {
 
       {/* --- PC Specs Section --- */}
       <PcSpecsSection />
+
+      {/* --- Memory Game Section --- */}
+      <MemoryGameSection />
 
       {/* --- Contact Section Component --- */}
       <ContactSection />
