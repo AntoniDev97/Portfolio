@@ -5,8 +5,9 @@ import ProjectCard from "./components/ProjectCard";
 import { projects } from "./data/projects";
 import GithubRepoSection from "./components/githubRepo/GithubRepoSection";
 import AboutMe from "./components/AboutMe";
-import ContactSection from "./components/ContactSection";
 import SkillsSection from "./components/SkillsSection";
+import PcSpecsSection from "./components/PcSpecsSection";
+import ContactSection from "./components/ContactSection";
 
 export default function HomePage() {
   return (
@@ -45,6 +46,9 @@ export default function HomePage() {
 
       {/* --- Skills Section Component --- */}
       <SkillsSection />
+
+      {/* --- PC Specs Section --- */}
+      <PcSpecsSection />
 
       {/* --- Contact Section Component --- */}
       <ContactSection />
