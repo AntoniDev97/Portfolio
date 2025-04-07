@@ -18,13 +18,18 @@ const Navbar = () => {
       <div className="navbar-start">
         <Link
           href="/"
-          className="font-mono uppercase text-2xl font-medium tracking-widest px-1 transition-opacity duration-300 ease-in-out hover:opacity-80"
+          // Default (mobile): text-lg, tracking-wider
+          // Medium screens and up (md:): text-2xl, tracking-widest
+          className="font-mono uppercase font-medium px-1 transition-opacity duration-300 ease-in-out hover:opacity-80
+                     text-lg tracking-wider
+                     md:text-2xl md:tracking-widest"
           aria-label="Homepage Logo"
         >
-          <span className="text-secondary font-normal">&lt;</span>{" "}
-          <span className="font-bold text-base-content">Doni</span>{" "}
-          <span className="text-primary font-normal ml-1">Codes</span>{" "}
-          <span className="text-secondary font-normal">/&gt;</span>{" "}
+          {/* Spans for color/weight remain the same */}
+          <span className="text-secondary font-normal">&lt; </span>
+          <span className="font-bold text-base-content">Doni</span>
+          <span className="text-primary font-normal ml-1">Codes</span>
+          <span className="text-secondary font-normal"> /&gt;</span>
         </Link>
       </div>
       <div className="navbar-end space-x-2">
