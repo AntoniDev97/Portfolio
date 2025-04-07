@@ -18,10 +18,13 @@ const Navbar = () => {
       <div className="navbar-start">
         <Link
           href="/"
-          className="btn btn-ghost text-xl font-mono uppercase tracking-wider"
+          className="font-mono uppercase text-2xl font-medium tracking-widest px-1 transition-opacity duration-300 ease-in-out hover:opacity-80"
+          aria-label="Homepage Logo"
         >
-          {/* btn-ghost uses base-content color (--bc) */}
-          Antoni C.
+          <span className="text-secondary font-normal">&lt;</span>{" "}
+          <span className="font-bold text-base-content">Doni</span>{" "}
+          <span className="text-primary font-normal ml-1">Codes</span>{" "}
+          <span className="text-secondary font-normal">/&gt;</span>{" "}
         </Link>
       </div>
       <div className="navbar-end space-x-2">
