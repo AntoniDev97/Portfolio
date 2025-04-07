@@ -90,6 +90,8 @@ const MemoryGameSection = () => {
   // --- Effect 1: Check for matches & Set Game Over ---
   // Runs when cards are flipped
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout | null = null;
+
     if (flippedIndexes.length === 2) {
       setIsChecking(true);
       setMoves((prev) => prev + 1); // Increment moves on every attempt
@@ -103,10 +105,7 @@ const MemoryGameSection = () => {
         console.error("Card data missing for flipped index.");
         setIsChecking(false);
         setFlippedIndexes([]);
-        return;
-      }
-
-      if (firstCard.value === secondCard.value) {
+      } else if (firstCard.value === secondCard.value) {
         // Match found
         const updatedCards = cards.map((card) =>
           card.value === firstCard.value
@@ -124,7 +123,7 @@ const MemoryGameSection = () => {
         }
       } else {
         // No match - flip back after a delay
-        const timeoutId = setTimeout(() => {
+        timeoutId = setTimeout(() => {
           setCards((prevCards) =>
             prevCards.map((card, index) =>
               index === firstIndex || index === secondIndex
@@ -135,10 +134,14 @@ const MemoryGameSection = () => {
           setFlippedIndexes([]);
           setIsChecking(false);
         }, 1000);
-        return () => clearTimeout(timeoutId); // Cleanup timeout
       }
     }
-    // This effect now correctly depends only on the state needed to check matches
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId); // Cleanup timeout
+      }
+    };
   }, [flippedIndexes, cards]);
   // --- End Effect 1 ---
 
