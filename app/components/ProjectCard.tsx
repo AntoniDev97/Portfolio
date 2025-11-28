@@ -37,23 +37,28 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
     >
-      <figure className="aspect-video overflow-hidden relative">
+      <figure className={`aspect-video overflow-hidden relative ${
+        imageUrl.endsWith('.svg') ? 'bg-white' : ''
+      }`}>
         <Image
           src={imageUrl}
           alt={`${title} screenshot`}
           width={600}
           height={338}
-          className="object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110"
+          className={`w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110 ${
+            imageUrl.endsWith('.svg') ? 'object-contain p-8' : 'object-cover'
+          }`}
+          style={imageUrl.endsWith('.svg') ? { height: 'auto', width: 'auto', margin: 'auto' } : {}}
         />
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"></div>
       </figure>
 
-      <div className="card-body p-6 flex-grow">
-        <h2 className="card-title text-2xl font-semibold">{title}</h2>
-        <p className="text-base-content/80 mt-2 mb-4 flex-grow">
+      <div className="card-body p-6 flex flex-col">
+        <h2 className="card-title text-2xl font-semibold flex-shrink-0" style={{ height: '2rem', lineHeight: '2rem' }}>{title}</h2>
+        <p className="text-base-content/80 mt-2 flex-shrink-0 overflow-hidden" style={{ height: '3rem', lineHeight: '1.5rem' }}>
           {description}
         </p>
-        <div className="card-actions justify-start flex-wrap gap-2 mb-4">
+        <div className="card-actions justify-start flex-wrap gap-2 mt-4 flex-shrink-0" style={{ height: '4rem' }}>
           {techStack.map((tech) => (
             <div key={tech} className="badge badge-secondary badge-outline">
               {tech}

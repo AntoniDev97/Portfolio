@@ -15,7 +15,7 @@ export const projects: ProjectType[] = [
   {
     title: "DC Reflections",
     description:
-      "Professional aesthetics clinic website built with a modern tech stack, focusing on clear service presentation and user experience.", // Keep your updated description
+      "Professional aesthetics clinic website built with a modern tech stack, focusing on clear service presentation and user experience.",
     imageUrl: "/images/dcreflections-homepage-screenshot.png",
     liveUrl: "https://www.dcreflections.co.uk/",
     //repoUrl: "https://github.com/AntoniDev97",
@@ -29,12 +29,31 @@ export const projects: ProjectType[] = [
       "MongoDB",
     ],
   },
-  // Add future project objects here:
-  // {
-  //   title: "Another Project",
-  //   description: "Description...",
-  //   imageUrl: "/images/another-project.png",
-  //   liveUrl: "...",
-  //   techStack: ["Tech1", "Tech2"],
-  // },
+  {
+    title: "Ethan Proctor Portfolio",
+    description:
+      "Professional portfolio website for a talented graphic designer, showcasing creative work and design expertise.",
+    imageUrl: "/images/fletchPlay.webp",
+    liveUrl: "https://www.ethanproctor.co.uk/",
+    techStack: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    title: "VouchAbout",
+    description:
+      "Local business advertisement directory helping local businesses connect with their community and grow their presence.",
+    imageUrl: "/images/vouchAboutLogo.svg",
+    liveUrl: "https://www.vouchabout.co.uk/",
+    techStack: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Firebase"
+    ],
+  },
 ];
