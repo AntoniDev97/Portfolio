@@ -57,14 +57,23 @@ const AboutMeSection = () => {
               improving code quality, performance, and maintainability.
             </motion.p>
             <motion.p variants={itemVariants}>
-              Driven by a passion for continuous learning, {`I'm`} actively
-              expanding my skill set into the modern JavaScript ecosystem,
-              currently diving deep into React, Next.js, TypeScript, and MongoDB
-              – the stack powering this very portfolio!
+              Alongside my day job, I founded DoniCodes Ltd in 2026 and built{" "}
+              <a
+                href="https://tcgdrop.co.uk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link link-hover text-accent font-semibold"
+              >
+                TCG Drop
+              </a>
+              , a live platform that runs stock drops for trading card shops. I
+              took it from idea to production with Next.js, TypeScript, Supabase
+              and Stripe, and I run it day to day, from payments and security to
+              supporting the shops that use it.
             </motion.p>
             <motion.p variants={itemVariants}>
               Outside of coding, I keep active with hobbies like the Gym,
-              Fishing, Metal Detecting, Football, and Badminton. And of course,
+              Fishing, Metal Detecting, Football, and Badminton. And of course,{" "}
               {`there's`} my cat, who often supervises my work!
             </motion.p>
           </motion.div>

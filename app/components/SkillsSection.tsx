@@ -13,7 +13,7 @@ import {
   MySqlIcon,
   DatabaseIcon,
   ServerIcon,
-  BrainIcon,
+  CloudIcon,
   MotionDevIcon,
   BootstrapIcon,
   NextjsIcon,
@@ -25,7 +25,12 @@ import {
   DotNetIcon,
   TailwindcssIcon,
   DaisyuiIcon,
+  PostgresqlIcon,
+  SupabaseIcon,
+  StripeIcon,
+  VercelIcon,
 } from "./icons/tech-icons";
+import { GithubIcon } from "./icons/icons";
 
 // Define Skill structure
 interface Skill {
@@ -69,19 +74,21 @@ const skillCategories: {
     title: "Databases",
     icon: DatabaseIcon,
     skills: [
+      { name: "PostgreSQL", icon: PostgresqlIcon },
       { name: "SQL Server", icon: SqlServerIcon },
       { name: "MongoDB", icon: MongoDbIcon },
       { name: "MySQL", icon: MySqlIcon },
     ],
   },
   {
-    title: "Currently Learning",
-    icon: BrainIcon,
+    // The production stack behind TCG Drop
+    title: "Platforms & Payments",
+    icon: CloudIcon,
     skills: [
-      { name: "React", icon: ReactIcon },
-      { name: "Next.js", icon: NextjsIcon },
-      { name: "TypeScript", icon: TypescriptIcon },
-      { name: "NoSQL Concepts", icon: MongoDbIcon },
+      { name: "Supabase", icon: SupabaseIcon },
+      { name: "Stripe", icon: StripeIcon },
+      { name: "Vercel", icon: VercelIcon },
+      { name: "GitHub", icon: GithubIcon },
     ],
   },
 ];
@@ -117,7 +124,8 @@ const SkillsSection = () => {
           My Tech Stack & Skills
         </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+        {/* 2x2 from md up: four narrow columns cut labels off ("Postgre...") */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {skillCategories.map((category) => (
             <motion.div
               key={category.title}
@@ -128,7 +136,7 @@ const SkillsSection = () => {
                 <category.icon className="w-5 h-5 " />
                 {category.title}
               </h3>
-              <div className="grid grid-cols-2 gap-4 flex-grow">
+              <div className="grid grid-cols-2 gap-4 flex-grow content-start">
                 {category.skills.map((skill) => (
                   <motion.div
                     key={skill.name}

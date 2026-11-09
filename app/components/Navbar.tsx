@@ -23,9 +23,8 @@ const Navbar = () => {
           className="font-mono uppercase font-medium px-1 transition-opacity duration-300 ease-in-out hover:opacity-80
                      text-lg tracking-wider
                      md:text-2xl md:tracking-widest"
-          aria-label="Homepage Logo"
+          aria-label="Doni Codes, home"
         >
-          {/* Spans for color/weight remain the same */}
           <span className="text-secondary font-normal">&lt; </span>
           <span className="font-bold text-base-content">Doni</span>
           <span className="text-primary font-normal ml-1">Codes</span>

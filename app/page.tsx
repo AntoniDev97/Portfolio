@@ -2,7 +2,8 @@
 
 import Hero from "./components/Hero";
 import ProjectCard from "./components/ProjectCard";
-import { projects } from "./data/projects";
+import FeaturedProject from "./components/FeaturedProject";
+import { featuredProject, projects } from "./data/projects";
 import GithubRepoSection from "./components/githubRepo/GithubRepoSection";
 import AboutMe from "./components/AboutMe";
 import SkillsSection from "./components/SkillsSection";
@@ -22,14 +23,21 @@ export default function HomePage() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16">
             Featured Projects
           </h2>
+          {/* Flagship project (TCG Drop), full width */}
+          <FeaturedProject project={featuredProject} />
+
+          <h3 className="text-2xl md:text-3xl font-bold text-center mt-16 md:mt-20 mb-10">
+            More Projects
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Map over the imported projects array */}
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <ProjectCard
-                key={index} // Using index is okay for static lists, consider unique ID if data changes
+                key={project.title}
                 title={project.title}
                 description={project.description}
                 imageUrl={project.imageUrl}
+                imageAlt={project.imageAlt}
                 liveUrl={project.liveUrl}
                 repoUrl={project.repoUrl}
                 techStack={project.techStack}

@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Antoni Christodoulou - Full Stack Developer",
   description:
-    "Portfolio showcasing projects and skills in modern web development.",
+    "Portfolio of Antoni Christodoulou, a full stack developer and the founder of TCG Drop, a live platform for trading card shops built with Next.js, TypeScript, Supabase and Stripe.",
 };
 
 export default function RootLayout({
